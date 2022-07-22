@@ -36,17 +36,14 @@ namespace D4_EmpWageComputation
                 switch (empCheck)
                 {
                     case IS_FULL_TIME:
-                        Console.WriteLine("\nFull time employee is Present");
                         empHour = 8; //Employee is present full time, assiging full time hour = 8
                         break;
 
                     case IS_PART_TIME:
-                        Console.WriteLine("\nPart time employee is Present");
                         empHour = 4; //Employee is present part time, assiging part time hour = 4
                         break;
 
                     default:
-                        Console.WriteLine("\nEmployee is Absent");
                         empHour = 0; //Employee is absent, assiging empHour = 0
                         break;
                 }
@@ -54,8 +51,8 @@ namespace D4_EmpWageComputation
                 workingHour += empHour;
                 empWage = empHour * WAGE_PER_HOUR; //Calculating Emp Wage( = Emp hour * wage per hour) for one day
                 Console.WriteLine("Employee wage for day-{0} is {1}", day, empWage); //displaying Emp wage
-                totalWage += empWage;  //total wage for max day or max hour
-                day++; //incrementing day after every iteration and to avoid infinite while loop
+                totalWage += empWage;  
+                day++; 
             }
 
             Console.WriteLine("\nTotal Wage for {0} day (working hour {1}) is {2}", day - 1, workingHour, totalWage);
