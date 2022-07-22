@@ -1,14 +1,13 @@
 ﻿namespace D4_EmpWageComputation
 {   /// <summary>
-    ///  UC7 : Refactor Code to write a class Method to compute Employee Wage 
+    ///  UC8: Compute Employee wage for multiple company using procedural way using class method
     /// </summary>
     public class Program
-    {   
-        //Entrypoint for all console applications
-         static void Main(string[] args)
-         {
-            ComputeEmpWage computeEmpWage = new ComputeEmpWage(); //Creating object of class ComputeEmpWage
-            computeEmpWage.ComputeEmployeeWage(); //Calling ComputeEmployeeWage() method of ComputeEmpWage class to calculate wage
+    {   //Entrypoint for all console applications
+        static void Main(string[] args)
+        {
+            EmpWageCalculation.calEmpWage("HCL", 100, 21, 270);
+            EmpWageCalculation.calEmpWage("Wipro", 80, 25, 280);
 
         }
     }
