@@ -10,32 +10,27 @@ namespace D4_EmpWageComputation
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
-         
-        int numOfCompany = 0;
-        public CompanyEmpWage[] companyEmpWageArray; //Declare CompEmpWage type array
 
+        List<CompanyEmpWage> companiesList; //Declaring List of CompanyEmpWage type
+        
         public EmpWageCalculation()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];
+            companiesList = new List<CompanyEmpWage>(); //Creating companiesList of CompanyEmpWage type
         }
 
         public void AddCompanyWage(string company, int wagePerHour, int maxNumWorkingDays, int maxHour)
         {
-            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, wagePerHour, maxNumWorkingDays, maxHour);
-            numOfCompany++;
-            //CompanyEmpWage companyEmpWageObj = new CompanyEmpWage( company, wagePerHour, maxNumWorkingDays, maxHour);
-            //companyEmpWageArray[this.numOfCompany] = companyEmpWageObj;
-            //numOfCompany++;
-
+            CompanyEmpWage companyEmpWageObj = new CompanyEmpWage(company, wagePerHour, maxNumWorkingDays, maxHour);
+            companiesList.Add(companyEmpWageObj);
         }
 
         public void ComputeEmpWage()
         {
-            for(int i = 0; i < numOfCompany; i++)
+            for(int i = 0; i < companiesList.Count; i++)
             {
-                int totalWage = ComputeEmpWage(companyEmpWageArray[i]);
-                companyEmpWageArray[i].SetTotalWage(totalWage);
-                Console.WriteLine("Companies Details : " + companyEmpWageArray[i]);
+                int totalWage = ComputeEmpWage(companiesList[i]);
+                companiesList[i].SetTotalWage(totalWage);
+                Console.WriteLine("Companies Details : " + companiesList[i]);
                
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace D4_EmpWageComputation
 {   /// <summary>
-    ///  UC10: Ability to manage employee Wage of multiple companies
+    ///  UC12: Refactor to have list of multiple companies to manage Employee Wage
     /// </summary>
     public class Program
     {   //Entrypoint for all console applications
