@@ -1,6 +1,6 @@
 ﻿namespace D4_EmpWageComputation
 {   /// <summary>
-    ///  UC12: Refactor to have list of multiple companies to manage Employee Wage
+    ///  UC13: Store the Daily Wage along with the Total Wage
     /// </summary>
     public class Program
     {   //Entrypoint for all console applications
