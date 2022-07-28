@@ -6,36 +6,44 @@ using System.Threading.Tasks;
 
 namespace D4_EmpWageComputation
 {
-    public class EmpWageCalculation
+    public class EmpWageCalculation : IEmpWageCalculation
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
 
-        //List<CompanyEmpWage> companiesList; //Declared List of CompanyEmpWage type
-        Dictionary<string, CompanyEmpWage> companiesDictionary; //Declared Dictionary to store Company Name and CompanyEmpWage object
+        List<CompanyEmpWage> companiesList;
+        Dictionary<string, CompanyEmpWage> companiesDictionary;
 
         public EmpWageCalculation()
         {
-            //companiesList = new List<CompanyEmpWage>(); //Created companiesList of CompanyEmpWage type
-            companiesDictionary = new Dictionary<string, CompanyEmpWage>();//Created dictionary
+            companiesList = new List<CompanyEmpWage>();
+            companiesDictionary = new Dictionary<string, CompanyEmpWage>();
         }
 
         public void AddCompanyWage(string company, int wagePerHour, int maxNumWorkingDays, int maxHour)
         {
             CompanyEmpWage companyEmpWageObj = new CompanyEmpWage(company, wagePerHour, maxNumWorkingDays, maxHour);
-            //companiesList.Add(companyEmpWageObj);
+            companiesList.Add(companyEmpWageObj);
             companiesDictionary.Add(company, companyEmpWageObj);
+
         }
 
         public void ComputeEmpWage()
         {
-            foreach (CompanyEmpWage compEmp in companiesDictionary.Values) //Loop to compute the wage for all company in dictionary
+            for (int i = 0; i < companiesList.Count; i++)
             {
-                int totalWage = ComputeEmpWage(compEmp); //calling ComputeEmp method to compute wage that return total wage
-                compEmp.SetTotalWage(totalWage); //setting total wage
-                Console.WriteLine("Companies Details : " + compEmp);
+                int totalWage = ComputeEmpWage(companiesList[i]);
+                companiesList[i].SetTotalWage(totalWage);
+                Console.WriteLine("Companies Details : " + companiesList[i]);
 
             }
+        }
+
+
+        public int TotalWageBasedOnCompany(string companyName)
+        {
+            int totalWage = companiesDictionary[companyName].totalWage;
+            return totalWage;
         }
 
         public int ComputeEmpWage(CompanyEmpWage CompanyEmpWage)
@@ -67,7 +75,7 @@ namespace D4_EmpWageComputation
 
                 workingHour += empHour;
                 empWage = empHour * CompanyEmpWage.wagePerHour; 
-                Console.WriteLine("Employee wage for day-{0} is {1}", day, empWage); 
+                //Console.WriteLine("Employee wage for day-{0} is {1}", day, empWage); 
                 totalWage = totalWage + empWage;  
                 day++; 
 
